@@ -1,9 +1,60 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "fire"
+    },
+    {
+      "id": "b32ddf02-c14d-4fea-808f-8e91552e22d7",
+      "name": "Аквамэн",
+      "description": "Властелин глубин и повелитель волн.",
+      "element": "water"
+    },
+    {
+      "id": "f6ec804d-f8cb-41f2-bcc9-8254be9307a3",
+      "name": "Шторм",
+      "description": "Неукротимая стихия ветра и молний.",
+      "element": "wind"
+    },
+    {
+      "id": "6bd34cd5-54bb-4d0c-a47a-228405627ee3",
+      "name": "Феникс",
+      "description": "Восстаёт из пепла, несущий пламя возрождения.",
+      "element": "fire"
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "filters": [
+    {
+      "id": "all",
+      "value": "all",
+      "label": "Все",
+      "className": "btn-outline-dark"
+    },
+    {
+      "id": "fire",
+      "value": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "id": "water",
+      "value": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "id": "wind",
+      "value": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "id": "earth",
+      "value": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    }
+  ]
 }
