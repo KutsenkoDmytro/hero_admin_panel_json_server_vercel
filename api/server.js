@@ -1,3 +1,4 @@
+/*
 // See https://github.com/typicode/json-server#module
 const jsonServer = require("json-server");
 
@@ -18,20 +19,6 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-// CORS middleware
-server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET,POST,PUT,PATCH,DELETE,OPTIONS"
-  );
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
-
 // Add this before server.use(router)
 server.use(
   jsonServer.rewriter({
@@ -45,4 +32,37 @@ server.listen(3000, () => {
 });
 
 // Export the Server API
+module.exports = server;
+*/
+
+// api/server.js
+const jsonServer = require("json-server");
+const server = jsonServer.create();
+const router = jsonServer.router("db.json"); // твой JSON файл
+const middlewares = jsonServer.defaults();
+
+// стандартные middlewares
+server.use(middlewares);
+
+// CORS middleware
+server.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,POST,PUT,PATCH,DELETE,OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  // preflight-запросы
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
+  next();
+});
+
+// подключаем json-server router
+server.use(router);
+
+// экспортируем для Vercel
 module.exports = server;
